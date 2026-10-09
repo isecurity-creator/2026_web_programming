@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Page</title>
+    <style>
+        body{
+            background: linear-gradient(90deg, red, orange, yellow, yellowgreen, green, skyblue, blue, blueviolet);
+        }
+        p{
+            font-size: 100px;
+            font-weight: 900;
+            text-align: center;
+            text-decoration:line-through;
+            border: yellow solid 10px;
+        }
+    </style>
+</head>
+<body>
+<p>Hello, World!</p>
+<p><a href="./intro.html">自己紹介</a></p>
+<p><a href="./hobby.html">趣味</a></p>
+<script>
+    const colorarray = ["red", "orange", "yellow", "yellowgreen", "green", "skyblue", "blue", "blueviolet"];
+    let color_index = 0;
+    let color_bg_index = 8;
+
+    function change_color(el, color){
+        el.style.borderColor = color;
+    }
+
+    function change_bg_color(el, color){
+        el.style.background = color;
+    }
+
+    //枠
+    setInterval(() => {
+        let color = colorarray[color_index];
+        document.querySelectorAll('p').forEach((el) => {
+            change_color(el, color);
+        });
+        color_index++;
+        if (color_index == 8) {
+            color_index = 0;
+        }
+    }, 20);
+    //ここの数字を買えると速さが変わる
+
+    //背景
+    setInterval(() => {
+        let color = colorarray[color_bg_index];
+        document.querySelectorAll('body').forEach((el) => {
+            change_bg_color(el, color);
+        });
+        color_bg_index--;
+        if (color_bg_index == -1) {
+            color_bg_index = 7;
+        }
+    }, 50);
+    //ここの数字を買えると速さが変わる
+
+</script>
+</body>
+</html>
+
