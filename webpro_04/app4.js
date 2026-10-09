@@ -2,6 +2,35 @@ const express = require("express");
 const path = require('path');
 const app = express();
 
+function getomikuji(){
+    const num = Math.floor( Math.random() * 6 + 1 );
+    let luck = '';
+    switch (num) {
+    case 1:
+        luck = '大吉';
+        break;
+    case 2:
+        luck = '吉';
+        break;
+    case 3:
+        luck = '中吉';
+        break;
+    case 4:
+        luck = '小吉';
+        break;
+    case 5:
+        luck = '凶';
+        break;
+    case 6:
+        luck = '大凶';
+        break;
+    default:
+        break;
+    }
+    return luck;
+}
+
+
 app.set('view engine', 'ejs');
 app.use("/public", express.static(path.join(__dirname + "/public")));
 app.use(express.urlencoded({ extended: true }));
@@ -21,21 +50,24 @@ app.get("/icon", (req, res) => {
 });
 
 app.get("/omikuji1", (req, res) => {
-  const num = Math.floor( Math.random() * 6 + 1 );
   let luck = '';
-  if( num==1 ) luck = '大吉';
-  else if( num==2 ) luck = '中吉';
+  luck = getomikuji();
 
   res.send( '今日の運勢は' + luck + 'です' );
 });
 
 app.get("/omikuji2", (req, res) => {
-  const num = Math.floor( Math.random() * 6 + 1 );
   let luck = '';
-  if( num==1 ) luck = '大吉';
-  else if( num==2 ) luck = '中吉';
+  luck = getomikuji();
 
   res.render( 'omikuji2', {result:luck} );
 });
 
-app.listen(8080, () => console.log("Example app listening on port 8080!"));
+app.get("/omikuji3", (req, res) => {
+  let luck = '';
+  luck = getomikuji();
+
+  res.render('omikuji3', {result:luck, comment:comment} );
+});
+
+app.listen(8081, () => console.log("Example app listening on port 8081!"));
