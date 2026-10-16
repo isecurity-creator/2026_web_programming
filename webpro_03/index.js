@@ -22,7 +22,7 @@ app.get("/german", (req, res) => {
 });
 
 app.get("/soviet", (req, res) => {
-  res.send('大粛清\n');
+  res.send('粛清\n');
 });
 
 app.use(function(req, res, next) {
