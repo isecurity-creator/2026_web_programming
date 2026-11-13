@@ -23,6 +23,7 @@ let station = [
   { id:15, code:"JE15", name:"検見川浜駅"},
   { id:16, code:"JE16", name:"稲毛海岸駅"},
   { id:17, code:"JE17", name:"千葉みなと駅"},
+  { id:18, code:null, name:"蘇我駅"},
 ];
 
 app.get("/keiyo", (req, res) => {
